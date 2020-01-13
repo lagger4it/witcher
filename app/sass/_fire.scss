@@ -1,0 +1,101 @@
+$fireColor: rgb(255,80,0);
+$fireColorT: rgba(255,80,0,0);
+$dur: 1s;
+$blur: 0.02em;
+$fireRad: 3em;
+$parts: 50;
+$partSize: 8em;
+$hover: darken(#fff, 10%);
+
+.fire {
+	font-size: 24px;
+	filter: blur($blur);
+	-webkit-filter: blur($blur);
+	margin: 3em auto 0 auto;
+	position: relative;
+	width: 100%;
+	height: 12em;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+}
+.particle {
+	animation: rise $dur ease-in infinite;
+	background-image: radial-gradient($fireColor 20%,$fireColorT 70%);
+	border-radius: 50%;
+	mix-blend-mode: screen;
+	opacity: 0;
+	position: absolute;
+	bottom: 0;
+	width: $partSize;
+	height: $partSize;
+	// spread particles out in time and x-position to get desired effect
+	@for $p from 1 through $parts {
+		&:nth-of-type(#{$p}) {
+			animation-delay: $dur * random();
+			left: calc((100% - #{$partSize}) * #{($p - 1)/$parts});
+		}
+	}
+}
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(0) scale(1);
+	}
+	25% {
+		opacity: .2;
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-80vh) scale(0);
+	}
+}
+@keyframes chColor {
+	from {
+		color: #ff2400;
+	}
+
+	50% {
+		color: #ff6347;
+	}
+	
+	to {
+		color: #d53e07;
+	}
+	
+}
+
+
+
+.round .button {
+	position: relative;
+	overflow: hidden;
+	transition: color .5s;
+}
+
+.button:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	background: #f7352726;
+	height: 150px;
+	width: 200px;
+	border-radius: 50%;
+}
+
+.button:hover {
+	color: #fff;
+}
+
+.button:before {
+	top: -20px;
+	left: -200%;
+	transition: all .7s;
+	z-index: 1;
+}
+
+.button:hover:before {
+	top: -30px;
+	left: -30px;
+}

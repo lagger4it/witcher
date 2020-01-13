@@ -1,0 +1,3 @@
+ncu
+step 1 : ncu --loglevel verbose --packageFile package.json
+step 2 : ncu -u --packageFile package.json

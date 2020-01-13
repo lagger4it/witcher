@@ -1,0 +1,225 @@
+@import vars
+@import fonts
+@import libs
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+input, textarea
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: 'Roboto', sans-serif
+	overflow-x: hidden
+	color: $text
+
+
+
+// header
+// 	+wrapper()
+// .items
+//     +row-flex()
+//     +md(justify-content, center)
+//     .item
+//         +col()
+//         +size(4)
+//         +size-md(6)
+//         +size-xs(12)
+// 				background-color: red
+
+section
+	height: 100vh
+	background: #0c0b0b url('../img/@1x/bg-min.jpg') no-repeat 50% 100% fixed
+	background-size: cover
+
+img
+	max-width: 100%
+
+.witcher
+	+row-flex()
+	height: 100%
+	overflow: hidden
+	+xs(align-content, center)
+	&_img
+		+col()
+		+size(6)
+		display: flex
+		align-items: flex-end
+		position: relative
+		+size-md(5)
+		+size-sm(12)
+		+sm(order, 2)
+		+sm(z-index, 1)
+		+sm(min-height, 200px)
+		// img
+		// 	z-index: 1
+	&_offer
+		+col()
+		+size(6)
+		font-family: 'Cambria', sans-serif
+		font-weight: bold
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		color: #fff
+		+size-md(7)
+		+size-sm(12)
+		+sm(order, 1)
+		+sm(z-index, 2)
+		&__title
+			font-size: 8.2rem
+			text-align: center
+			line-height: 5.4rem
+			+xs(font-size, 6rem)
+			+xs(line-height, 4rem)
+			span
+				display: block
+				font-size: 2.6rem
+				text-transform: uppercase
+				+xs(font-size, 2rem)
+		&__code
+			text-transform: uppercase
+			overflow: hidden
+			display: flex
+			align-items: center
+			animation: tinRightIn 2s ease-in 1 
+			animation-delay: 0.5s
+			animation-fill-mode: forwards
+			opacity: 0
+			.promocod
+				border: 1px dashed #464646
+				text-transform: uppercase
+				color: #f73427
+				padding: 4px 15px 4px 15px
+				font-size: 25px
+				letter-spacing: 3px
+				font-weight: normal
+				font-family: Arial, "Helvetica Neue"
+				border-right: 2px solid #464646
+				border-top-left-radius: 50px
+				border-bottom-left-radius: 50px
+				+xs(font-size, 22px)
+				+xs(padding, 3px 13px 3px 13px)
+			.copy
+				font-family: Arial, "Helvetica Neue"
+				text-transform: uppercase
+				padding: 0 20px
+				align-self: stretch
+				background-color: transparent
+				color: #fff
+				font-size: 14px
+				border-top-right-radius: 50px
+				border-bottom-right-radius: 50px
+				transition: all 0.2s
+				border: 1px dashed #464646
+				border-left: none
+				// &:hover
+				// 	background-color: #ffffff
+				// 	color: black
+		&__link
+			margin-top: 35px
+			padding: 14px 70px
+			background-color: #f73427
+			color: #fff
+			font-family: Arial, "Helvetica Neue"
+			border-radius: 50px
+			text-transform: uppercase
+			font-size: 15px
+			transition: all 0.2s
+			animation: tinDownIn 1s ease-in 1 
+			animation-delay: 1.5s
+			animation-fill-mode: forwards
+			opacity: 0
+			+sm(margin-top, 25px)
+			&:hover
+				background-color: #ff1000
+				text-decoration: none
+				color: #fff
+
+.witcher_offer__code .promocod_active
+	animation: chColor 0.4s ease-in infinite
+
+
+.wrap	
+	+wrapper()
+	height: 100%
+
+.parallax
+	position: absolute
+	width: 100%
+	height: 100%
+	top: 0
+	left: 0
+	&_front
+		z-index: 2
+		+sm(position, fixed)
+		+sm(opacity, 0.4)
+	&_back
+
+.scene
+	width: 100%
+	height: 100%
+	&_front
+		width: 100%
+		height: 100%
+		background: url('../img/@1x/sparks_back-min.png') no-repeat 0 center
+		background-size: cover
+	&_back
+		background-color: #fff
+		width: 100%
+		height: 100%
+		background: url(../img/@1x/sparks_front-min.png) no-repeat 16% 89%
+		background-size: contain
+
+.witcher_offer__title
+	animation: spaceInUp 1.2s ease-in 1
+
+
+.flash
+	position: absolute
+	width: 200px
+	height: 200px
+	background-color: red
+	z-index: 9
+
+
+.img_withecher
+	width: 100%
+	height: 100%
+	background: url(../img/@1x/witcherOld-min.png) no-repeat 50% 100%
+	background-size: contain
+	z-index: 1
+	+md(background, url(../img/@1x/witcherMd-min.png) no-repeat 50% 100%)
+	+md(background-size, contain)
+	+sm(background, url(../img/@1x/mobile.png) no-repeat 50% 100%)
+	+sm(background-size, contain)
+
+.fire
+	+sm(opacity, 0.3)
+
+.brand
+	position: fixed
+	display: flex
+	bottom: 20px
+	left: 0
+	width: 100%
+	justify-content: space-between
+	padding: 0 30px
+	align-items: center
+	&_img
+		max-width: 100px
+	span
+		font-size: 14px
